@@ -9,7 +9,7 @@ class AddExpenseModal extends React.Component {
     this.state = {
       description: '',
       cost: 0,
-      quantity: 0
+      quantity: 0,
     }
 
     this.addExpense = this.addExpense.bind(this);
@@ -22,14 +22,15 @@ class AddExpenseModal extends React.Component {
     if (!this.validSubmit()) {
       return false;
     }
-    this.props.list.push({
+
+    var joinedList = this.props.list.concat([{
       'id': this.props.list.length + 1,
       'description': this.state.description,
       'cost': this.state.cost,
       'quantity': this.state.quantity
-    });
+    }]);
 
-    window.dispatchEvent(new Event('list-updated'));
+    this.props.actionUpdate(joinedList);
     this.resetState();
     this.props.toggleModal();
   }

@@ -14,6 +14,14 @@ class App extends Component {
     this.state = {
       list: []
     }
+
+    this.setListStatus = this.setListStatus.bind(this);
+  }
+
+  setListStatus(list) {
+    this.setState({
+      list: list
+    });
   }
 
   render() {
@@ -26,7 +34,7 @@ class App extends Component {
         <Container>
           <Row className="mt-3">
             <Col>
-              <AddExpenseButton list={this.state.list}></AddExpenseButton>
+              <AddExpenseButton list={this.state.list} actionUpdate={this.setListStatus}></AddExpenseButton>
             </Col>
             </Row>
           <Row className="mt-3" >

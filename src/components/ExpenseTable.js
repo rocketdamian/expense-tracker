@@ -2,27 +2,6 @@ import React from 'react';
 import { Table } from 'reactstrap';
 
 class ExpenseTasble extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      list: this.props.list
-    }
-
-    this.updateListState = this.updateListState.bind(this);
-  }
-
-  componentDidMount() {
-    window.addEventListener('list-updated', this.updateListState);
-  }
-
-  updateListState() {
-    this.setState({
-      list: this.state.list
-    });
-  }
-
   render() {
     return (
       <Table>
@@ -36,7 +15,7 @@ class ExpenseTasble extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.list.map(item => 
+          {this.props.list.map(item => 
               <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.description}</td>

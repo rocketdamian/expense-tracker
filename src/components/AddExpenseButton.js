@@ -9,7 +9,6 @@ class AddExpenseButton extends React.Component {
 
     this.state = {
       modal: false,
-      list: this.props.list
     };
 
     this.toggleModal = this.toggleModal.bind(this);
@@ -25,7 +24,7 @@ class AddExpenseButton extends React.Component {
     return (
       <div>
         <Button color="primary" onClick={this.toggleModal}>Submit expense</Button>
-        <AddExpenseModal modal={this.state.modal} toggleModal={this.toggleModal} list={this.state.list}></AddExpenseModal>
+        <AddExpenseModal modal={this.state.modal} toggleModal={this.toggleModal} list={this.props.list} actionUpdate={this.props.actionUpdate}></AddExpenseModal>
       </div>
     );
   }
